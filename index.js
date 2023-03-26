@@ -1,11 +1,18 @@
-import { parseFile, timeout } from 'tools-d4rk444/other.js';
+import { timeout } from 'tools-d4rk444/other.js';
 import { claimETHGoerli } from 'tools-d4rk444/faucet.js';
+import fs from 'fs';
 import chalk from 'chalk';
 import consoleStamp from 'console-stamp';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
 consoleStamp(console, { format: ':date(HH:MM:ss)' });
+
+const parseFile = (file) => {
+    const data = fs.readFileSync(file, "utf-8");
+    const array = data.split('\n');
+    return array;
+}
 
 (async() => {
     const wallet = parseFile('address.txt');
